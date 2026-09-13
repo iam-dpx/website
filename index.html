@@ -1,0 +1,89 @@
+<!--
+  index.html
+  Dead Pixel — personal profile site
+  Written by Dead Pixel (iamreal.dpx@gmail.com)
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dead Pixel — I work with anything that touches code</title>
+  <meta name="description" content="Dead Pixel: generalist coder working across web, scripts, web games, Lua game modding, and Discord/LINE bots." />
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+
+  <header class="hero" id="top">
+    <p class="hero__eyebrow">// booting profile</p>
+    <h1 class="hero__title" id="glitchTitle" data-text="DEAD PIXEL">DEAD PIXEL</h1>
+    <p class="hero__tagline">I work with anything that touches code.</p>
+    <nav class="hero__nav" aria-label="Section navigation">
+      <a href="#about">About</a>
+      <a href="#make">What I Make</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="about" class="section">
+      <h2 class="section__label">01 — About</h2>
+      <p class="section__lead">
+        No single lane. If it compiles, runs, or renders — I'm probably in there
+        somewhere. Web builds, scripts that automate the boring parts, browser
+        games, chat bots, and reaching into existing games through Lua to bend
+        their rules a little.
+      </p>
+      <p class="section__body">
+        This page grows as the work grows — nothing below is fixed. Every
+        project it lists actually got built; nothing here is aspirational
+        filler.
+      </p>
+    </section>
+
+    <section id="make" class="section">
+      <h2 class="section__label">02 — What I Make</h2>
+      <div class="grid" id="projectGrid">
+        <div class="empty-card">
+          <p class="empty-card__title">Nothing shipped here yet.</p>
+          <p class="empty-card__body">
+            First project lands here once it's built. Check back soon.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <h2 class="section__label">03 — Skills</h2>
+      <div class="focus-tags" aria-label="Areas of focus">
+        <span class="tag">Web Dev</span>
+        <span class="tag">Scripts</span>
+        <span class="tag">Web-based Games</span>
+        <span class="tag">Lua Modding</span>
+        <span class="tag">Discord Bots</span>
+        <span class="tag">LINE Bots</span>
+      </div>
+      <p class="section__note">
+        Language list is intentionally empty right now — it fills in as we
+        finish real projects, not before.
+      </p>
+    </section>
+
+    <section id="contact" class="section">
+      <h2 class="section__label">04 — Contact</h2>
+      <p class="section__body">
+        <a class="link" href="mailto:iamreal.dpx@gmail.com">iamreal.dpx@gmail.com</a>
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Dead Pixel — iamreal.dpx@gmail.com</p>
+  </footer>
+
+  <script type="module" src="dist/main.js"></script>
+</body>
+</html>

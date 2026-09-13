@@ -1,0 +1,252 @@
+/*
+  style.css
+  Dead Pixel — personal profile site
+  Written by Dead Pixel (iamreal.dpx@gmail.com)
+*/
+
+:root {
+  --bg: #0a0b0d;
+  --surface: #14161a;
+  --text: #e7e9ec;
+  --muted: #8b909a;
+  --cyan: #4fe3c1;
+  --magenta: #ff4fa3;
+  --border: #24272d;
+
+  --font-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+
+  --max-width: 720px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+  line-height: 1.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 4rem 1.5rem 3rem;
+}
+
+.hero__eyebrow {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 0 0 0.75rem;
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 9vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+  position: relative;
+  color: var(--text);
+}
+
+/* One-time glitch reveal on load, not on every hover/scroll */
+.hero__title.glitch::before,
+.hero__title.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero__title.glitch::before {
+  color: var(--cyan);
+  animation: glitch-shift-1 0.6s steps(2, end) 1;
+  clip-path: inset(0 0 60% 0);
+}
+
+.hero__title.glitch::after {
+  color: var(--magenta);
+  animation: glitch-shift-2 0.6s steps(2, end) 1;
+  clip-path: inset(60% 0 0 0);
+}
+
+@keyframes glitch-shift-1 {
+  0% { transform: translate(0, 0); }
+  30% { transform: translate(-3px, -1px); }
+  60% { transform: translate(2px, 1px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes glitch-shift-2 {
+  0% { transform: translate(0, 0); }
+  30% { transform: translate(3px, 1px); }
+  60% { transform: translate(-2px, -1px); }
+  100% { transform: translate(0, 0); }
+}
+
+.hero__tagline {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin: 0.75rem 0 2rem;
+}
+
+.hero__nav {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.hero__nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2px;
+}
+
+.hero__nav a:hover,
+.hero__nav a:focus-visible {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+/* ---------- Sections ---------- */
+
+.section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.section__label {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--cyan);
+  margin: 0 0 1rem;
+  font-weight: 600;
+}
+
+.section__lead {
+  font-size: 1.05rem;
+  margin: 0 0 1rem;
+}
+
+.section__body {
+  color: var(--muted);
+  margin: 0 0 0.5rem;
+}
+
+.section__note {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+/* ---------- What I Make: empty state + future cards ---------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.empty-card,
+.project-card {
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: 4px;
+  padding: 1.25rem;
+}
+
+.project-card {
+  border-style: solid;
+}
+
+.empty-card__title {
+  margin: 0 0 0.4rem;
+  color: var(--text);
+}
+
+.empty-card__body {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- Skills tags ---------- */
+
+.focus-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  font-size: 0.85rem;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--cyan);
+  background: var(--surface);
+}
+
+/* ---------- Links ---------- */
+
+.link {
+  color: var(--cyan);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
+.link:hover,
+.link:focus-visible {
+  color: var(--magenta);
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ---------- Device-mode hooks (set by main.ts) ---------- */
+
+body.is-mobile .hero {
+  padding-top: 2.5rem;
+}
+
+body.is-desktop .section {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
