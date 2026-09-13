@@ -1,0 +1,124 @@
+<!--
+  index.html
+  Dead Pixel — personal profile site
+  Written by Dead Pixel (iamreal.dpx@gmail.com)
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dead Pixel — I work with anything that touches code</title>
+  <meta name="description" content="Dead Pixel: generalist coder working across web, scripts, web games, Lua game modding, and Discord/LINE bots." />
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+
+  <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <span class="topbar__brand">DEAD_PIXEL</span>
+    <button class="topbar__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="siteNav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="topbar__nav" id="siteNav" aria-label="Section navigation">
+      <a href="#about" data-nav="about">About</a>
+      <a href="#make" data-nav="make">What I Make</a>
+      <a href="#skills" data-nav="skills">Skills</a>
+      <a href="#contact" data-nav="contact">Contact</a>
+    </nav>
+  </header>
+
+  <header class="hero" id="top">
+    <div class="terminal" id="terminal" role="group" aria-label="Interactive command terminal">
+      <div class="terminal__bar">
+        <span class="terminal__dot terminal__dot--r"></span>
+        <span class="terminal__dot terminal__dot--y"></span>
+        <span class="terminal__dot terminal__dot--g"></span>
+        <span class="terminal__path">guest@deadpixel:~</span>
+      </div>
+      <div class="terminal__body" id="terminalBody">
+        <!-- Lines are printed here by main.ts, starting with the typed intro
+             and the command list, so a visitor immediately knows what to do -->
+      </div>
+      <div class="terminal__input-row">
+        <label class="terminal__prompt" for="terminalInput">guest@deadpixel:~$</label>
+        <input
+          class="terminal__input"
+          id="terminalInput"
+          type="text"
+          autocomplete="off"
+          autocapitalize="off"
+          spellcheck="false"
+          aria-label="Type a command, or use the nav links above"
+          placeholder="type 'help'"
+        />
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="about" class="section reveal">
+      <h2 class="section__label">01 — About</h2>
+      <p class="section__lead">
+        No single lane. If it compiles, runs, or renders — I'm probably in there
+        somewhere. Web builds, scripts that automate the boring parts, browser
+        games, chat bots, and reaching into existing games through Lua to bend
+        their rules a little.
+      </p>
+      <p class="section__body">
+        This page grows as the work grows — nothing below is fixed. Every
+        project it lists actually got built; nothing here is aspirational
+        filler.
+      </p>
+    </section>
+
+    <section id="make" class="section reveal">
+      <h2 class="section__label">02 — What I Make</h2>
+      <div class="grid" id="projectGrid">
+        <div class="empty-card">
+          <p class="empty-card__title">Nothing shipped here yet.</p>
+          <p class="empty-card__body">
+            First project lands here once it's built.
+          </p>
+          <a class="empty-card__cta" href="mailto:iamreal.dpx@gmail.com">Ping me about it →</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section reveal">
+      <h2 class="section__label">03 — Skills</h2>
+      <div class="focus-tags" id="focusTags" aria-label="Areas of focus, tap to highlight">
+        <button class="tag" type="button">Web Dev</button>
+        <button class="tag" type="button">Scripts</button>
+        <button class="tag" type="button">Web-based Games</button>
+        <button class="tag" type="button">Lua Modding</button>
+        <button class="tag" type="button">Discord Bots</button>
+        <button class="tag" type="button">LINE Bots</button>
+      </div>
+      <p class="section__note">
+        Language list is intentionally empty right now — it fills in as we
+        finish real projects, not before.
+      </p>
+    </section>
+
+    <section id="contact" class="section reveal">
+      <h2 class="section__label">04 — Contact</h2>
+      <div class="contact-row">
+        <a class="link" href="mailto:iamreal.dpx@gmail.com">iamreal.dpx@gmail.com</a>
+        <button class="copy-btn" id="copyEmailBtn" type="button" data-email="iamreal.dpx@gmail.com">
+          Copy
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Dead Pixel — iamreal.dpx@gmail.com</p>
+  </footer>
+
+  <script type="module" src="dist/main.js"></script>
+</body>
+</html>
