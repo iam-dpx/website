@@ -91,29 +91,6 @@ function initFocusTags() {
         });
     });
 }
-/* ---------- Copy-to-clipboard contact button ---------- */
-function initCopyButton() {
-    const btn = document.getElementById("copyEmailBtn");
-    if (!btn)
-        return;
-    const email = btn.dataset.email || "";
-    const originalLabel = btn.textContent || "Copy";
-    btn.addEventListener("click", async () => {
-        try {
-            await navigator.clipboard.writeText(email);
-        }
-        catch {
-            // Clipboard API unavailable — fail silently, the email is still
-            // visible and selectable as plain text next to the button.
-        }
-        btn.textContent = "Copied!";
-        btn.classList.add("is-copied");
-        window.setTimeout(() => {
-            btn.textContent = originalLabel;
-            btn.classList.remove("is-copied");
-        }, 1500);
-    });
-}
 /* ---------- Expandable project cards (ready for future entries) ---------- */
 function initExpandableProjectCards() {
     document.querySelectorAll(".project-card").forEach((card) => {
@@ -150,7 +127,6 @@ function initTerminal() {
         print("  about      — who I am");
         print("  make       — what I've built");
         print("  skills     — what I focus on");
-        print("  contact    — how to reach me");
         print("  clear      — clear this terminal");
         print("  help       — show this list again");
     };
@@ -160,7 +136,6 @@ function initTerminal() {
         make: { run: () => scrollToSection("make") },
         projects: { run: () => scrollToSection("make") },
         skills: { run: () => scrollToSection("skills") },
-        contact: { run: () => scrollToSection("contact") },
         help: { run: () => printHelp() },
         clear: {
             run: () => {
@@ -201,6 +176,13 @@ function initTerminal() {
     };
     printNextIntroLine();
 }
+/* ---------- Footer copyright year (standard block, reusable as-is) ---------- */
+function initFooterYear() {
+    const el = document.getElementById("footerYear");
+    if (!el)
+        return;
+    el.textContent = String(new Date().getFullYear());
+}
 /* ---------- Init ---------- */
 function init() {
     applyDeviceClass();
@@ -209,8 +191,8 @@ function init() {
     initScrollSpy();
     initRevealOnScroll();
     initFocusTags();
-    initCopyButton();
     initExpandableProjectCards();
+    initFooterYear();
     initTerminal();
 }
 document.addEventListener("DOMContentLoaded", init);

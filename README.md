@@ -42,6 +42,16 @@ Future JS, CSS, or other code should go in its own folder the same way
   toggles an `is-expanded` state on click/Enter/Space. Ready for when real
   projects are added to the `#projectGrid` grid in `index.html`.
 
+## Standard footer (reuse this in future projects)
+
+```html
+<footer class="footer">
+  <p>© <span id="footerYear"></span> Dead Pixel. All rights reserved.</p>
+</footer>
+```
+Paired with `initFooterYear()` in `main.ts`, which fills in the current
+year automatically — no email or other contact info in the footer.
+
 ## How the TypeScript build works
 
 `src/main.ts` is written in TypeScript. It's compiled to plain JavaScript

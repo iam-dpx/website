@@ -115,31 +115,6 @@ function initFocusTags(): void {
   });
 }
 
-/* ---------- Copy-to-clipboard contact button ---------- */
-
-function initCopyButton(): void {
-  const btn = document.getElementById("copyEmailBtn") as HTMLButtonElement | null;
-  if (!btn) return;
-
-  const email = btn.dataset.email || "";
-  const originalLabel = btn.textContent || "Copy";
-
-  btn.addEventListener("click", async () => {
-    try {
-      await navigator.clipboard.writeText(email);
-    } catch {
-      // Clipboard API unavailable — fail silently, the email is still
-      // visible and selectable as plain text next to the button.
-    }
-    btn.textContent = "Copied!";
-    btn.classList.add("is-copied");
-    window.setTimeout(() => {
-      btn.textContent = originalLabel;
-      btn.classList.remove("is-copied");
-    }, 1500);
-  });
-}
-
 /* ---------- Expandable project cards (ready for future entries) ---------- */
 
 function initExpandableProjectCards(): void {
@@ -185,7 +160,6 @@ function initTerminal(): void {
     print("  about      — who I am");
     print("  make       — what I've built");
     print("  skills     — what I focus on");
-    print("  contact    — how to reach me");
     print("  clear      — clear this terminal");
     print("  help       — show this list again");
   };
@@ -196,7 +170,6 @@ function initTerminal(): void {
     make: { run: () => scrollToSection("make") },
     projects: { run: () => scrollToSection("make") },
     skills: { run: () => scrollToSection("skills") },
-    contact: { run: () => scrollToSection("contact") },
     help: { run: () => printHelp() },
     clear: {
       run: () => {
@@ -244,6 +217,14 @@ function initTerminal(): void {
   printNextIntroLine();
 }
 
+/* ---------- Footer copyright year (standard block, reusable as-is) ---------- */
+
+function initFooterYear(): void {
+  const el = document.getElementById("footerYear");
+  if (!el) return;
+  el.textContent = String(new Date().getFullYear());
+}
+
 /* ---------- Init ---------- */
 
 function init(): void {
@@ -253,8 +234,8 @@ function init(): void {
   initScrollSpy();
   initRevealOnScroll();
   initFocusTags();
-  initCopyButton();
   initExpandableProjectCards();
+  initFooterYear();
   initTerminal();
 }
 
