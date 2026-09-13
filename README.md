@@ -48,14 +48,20 @@ Future JS, CSS, or other code should go in its own folder the same way
 in `dist/main.js`, which `index.html` loads. You never edit `dist/` by
 hand — it's regenerated every build.
 
+**`dist/main.js` is committed to the repo**, not gitignored. That means
+the site works as plain static files with zero build configuration on
+Cloudflare's side — no risk of the script silently failing to load
+because a build step didn't run. Whenever `src/main.ts` changes, the
+compiled `dist/main.js` handed to you alongside it is already up to
+date — just commit both together.
+
 ## Deploying with Cloudflare Pages
 
-When you connect this GitHub repo to Cloudflare Pages, use these build
-settings:
+No build command needed. In Cloudflare Pages project settings:
 
-- **Build command:** `npm install && npm run build`
+- **Framework preset:** None
+- **Build command:** (leave empty)
 - **Build output directory:** `/` (the project root)
 
-Cloudflare will install TypeScript, run `tsc` to generate `dist/main.js`,
-then serve the whole project. No manual build step needed on your end —
-every push to the repo triggers a new deploy automatically.
+Cloudflare just serves the repo's files as-is. Every push to GitHub
+triggers a redeploy automatically.

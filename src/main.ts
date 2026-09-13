@@ -164,8 +164,9 @@ type TerminalCommand = {
 
 function initTerminal(): void {
   const body = document.getElementById("terminalBody");
+  const form = document.getElementById("terminalForm") as HTMLFormElement | null;
   const input = document.getElementById("terminalInput") as HTMLInputElement | null;
-  if (!body || !input) return;
+  if (!body || !form || !input) return;
 
   const print = (text: string, tone?: "muted" | "cyan" | "magenta"): void => {
     const line = document.createElement("p");
@@ -204,8 +205,8 @@ function initTerminal(): void {
     },
   };
 
-  input.addEventListener("keydown", (event) => {
-    if (event.key !== "Enter") return;
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
     const raw = input.value.trim();
     if (!raw) return;
 

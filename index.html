@@ -41,7 +41,7 @@
         <!-- Lines are printed here by main.ts, starting with the typed intro
              and the command list, so a visitor immediately knows what to do -->
       </div>
-      <div class="terminal__input-row">
+      <form class="terminal__input-row" id="terminalForm">
         <label class="terminal__prompt" for="terminalInput">guest@deadpixel:~$</label>
         <input
           class="terminal__input"
@@ -50,10 +50,11 @@
           autocomplete="off"
           autocapitalize="off"
           spellcheck="false"
+          enterkeyhint="go"
           aria-label="Type a command, or use the nav links above"
           placeholder="type 'help'"
         />
-      </div>
+      </form>
     </div>
   </header>
 
