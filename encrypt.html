@@ -41,15 +41,6 @@
   <main>
     <section class="section reveal" id="tool">
 
-      <div class="mode-tabs" role="tablist">
-        <button class="mode-tab is-active" id="tabEncrypt" data-mode="encrypt" type="button" role="tab" aria-selected="true">
-          Encrypt a link
-        </button>
-        <button class="mode-tab" id="tabDecrypt" data-mode="decrypt" type="button" role="tab" aria-selected="false">
-          Decrypt a link
-        </button>
-      </div>
-
       <form class="crypto-form" id="encryptForm">
         <label class="crypto-label" for="encryptUrl">Link to protect</label>
         <input
@@ -76,16 +67,8 @@
       </form>
 
       <form class="crypto-form" id="decryptForm" hidden>
-        <label class="crypto-label" id="decryptPayloadLabel" for="decryptPayload">Encrypted link</label>
-        <textarea
-          class="crypto-input crypto-input--area"
-          id="decryptPayload"
-          rows="3"
-          placeholder="Paste the encrypted link here"
-        ></textarea>
-
-        <p class="crypto-note" id="decryptDetectedNote" hidden>
-          Encrypted link detected in the URL — just enter the password.
+        <p class="crypto-note">
+          This link is password-protected. Enter the password to continue.
         </p>
 
         <label class="crypto-label" for="decryptPassword">Password</label>
@@ -97,7 +80,7 @@
           autocomplete="current-password"
         />
 
-        <button class="btn" type="submit">Decrypt</button>
+        <button class="btn" type="submit">Unlock</button>
       </form>
 
       <div class="crypto-result" id="cryptoResult" hidden></div>

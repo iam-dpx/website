@@ -127,44 +127,15 @@ function showResult(el: HTMLElement, html: string, tone: "success" | "error"): v
   el.innerHTML = html;
 }
 
-function initModeTabs(): void {
-  const tabEncrypt = document.getElementById("tabEncrypt");
-  const tabDecrypt = document.getElementById("tabDecrypt");
+function showDecryptFormIfLinked(): string | null {
   const encryptForm = document.getElementById("encryptForm");
   const decryptForm = document.getElementById("decryptForm");
-  const result = document.getElementById("cryptoResult");
-  if (!tabEncrypt || !tabDecrypt || !encryptForm || !decryptForm || !result) return;
+  const payload = extractPayload(window.location.hash);
+  if (!payload || !encryptForm || !decryptForm) return null;
 
-  const setMode = (mode: "encrypt" | "decrypt"): void => {
-    const isEncrypt = mode === "encrypt";
-    tabEncrypt.classList.toggle("is-active", isEncrypt);
-    tabDecrypt.classList.toggle("is-active", !isEncrypt);
-    tabEncrypt.setAttribute("aria-selected", String(isEncrypt));
-    tabDecrypt.setAttribute("aria-selected", String(!isEncrypt));
-    encryptForm.hidden = !isEncrypt;
-    decryptForm.hidden = isEncrypt;
-    result.hidden = true;
-  };
-
-  tabEncrypt.addEventListener("click", () => setMode("encrypt"));
-  tabDecrypt.addEventListener("click", () => setMode("decrypt"));
-
-  // If the page was opened with an encrypted payload in the URL, jump
-  // straight into decrypt mode and hide the "paste it in" field since
-  // the payload is already right there.
-  const fromUrl = extractPayload(window.location.hash);
-  if (fromUrl) {
-    setMode("decrypt");
-    const payloadField = document.getElementById("decryptPayload") as HTMLTextAreaElement | null;
-    const payloadLabel = document.getElementById("decryptPayloadLabel");
-    const detectedNote = document.getElementById("decryptDetectedNote");
-    if (payloadField) {
-      payloadField.value = fromUrl;
-      payloadField.hidden = true;
-    }
-    if (payloadLabel) payloadLabel.hidden = true;
-    if (detectedNote) detectedNote.hidden = false;
-  }
+  encryptForm.hidden = true;
+  decryptForm.hidden = false;
+  return payload;
 }
 
 function initEncryptForm(): void {
@@ -212,44 +183,61 @@ function initEncryptForm(): void {
   });
 }
 
-function initDecryptForm(): void {
+const REDIRECT_SECONDS = 10;
+
+function initDecryptForm(payload: string): void {
   const form = document.getElementById("decryptForm") as HTMLFormElement | null;
-  const payloadField = document.getElementById("decryptPayload") as HTMLTextAreaElement | null;
   const passwordInput = document.getElementById("decryptPassword") as HTMLInputElement | null;
   const result = document.getElementById("cryptoResult");
-  if (!form || !payloadField || !passwordInput || !result) return;
+  if (!form || !passwordInput || !result) return;
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const payload = extractPayload(payloadField.value);
     const password = passwordInput.value;
-
-    if (!payload) {
-      showResult(result, "That doesn't look like a valid encrypted link.", "error");
-      return;
-    }
     if (!password) return;
 
     try {
       const original = await decryptLink(payload, password);
-      showResult(
-        result,
-        `
-          <p class="crypto-result__label">Decrypted link:</p>
-          <a class="crypto-result__value link" href="${original}" target="_blank" rel="noopener noreferrer">${original}</a>
-        `,
-        "success"
-      );
+      startRedirectCountdown(result, original);
     } catch {
       showResult(result, "Incorrect password. Try again.", "error");
     }
   });
 }
 
+function startRedirectCountdown(result: HTMLElement, destination: string): void {
+  let secondsLeft = REDIRECT_SECONDS;
+
+  showResult(
+    result,
+    `
+      <p class="crypto-result__label">
+        Correct password — redirecting in <span id="redirectCountdown">${secondsLeft}</span>s
+      </p>
+      <a class="crypto-result__value link" href="${destination}" id="redirectLink">${destination}</a>
+    `,
+    "success"
+  );
+
+  const countdownEl = document.getElementById("redirectCountdown");
+
+  const timer = window.setInterval(() => {
+    secondsLeft -= 1;
+    if (countdownEl) countdownEl.textContent = String(secondsLeft);
+    if (secondsLeft <= 0) {
+      window.clearInterval(timer);
+      window.location.href = destination;
+    }
+  }, 1000);
+}
+
 function init(): void {
-  initModeTabs();
-  initEncryptForm();
-  initDecryptForm();
+  const payload = showDecryptFormIfLinked();
+  if (payload) {
+    initDecryptForm(payload);
+  } else {
+    initEncryptForm();
+  }
 }
 
 document.addEventListener("DOMContentLoaded", init);

@@ -34,7 +34,11 @@ Future JS, CSS, or other code should go in its own folder the same way
   in the URL fragment (`#...`), which browsers never send to a server —
   so there's nothing to store and nothing a server ever sees. Wrong
   password or tampered payload fails cleanly via GCM's built-in
-  authentication check.
+  authentication check. Decrypting only ever happens by visiting an
+  encrypted link directly (no manual "paste a link" option) — on the
+  correct password, the original link opens automatically after a
+  visible 10-second countdown, with the link also shown so the visitor
+  can jump immediately instead of waiting.
 
 ## What's interactive
 

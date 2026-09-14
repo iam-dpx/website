@@ -504,28 +504,6 @@ button {
 
 /* ---------- Link encryptor tool ---------- */
 
-.mode-tabs {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.mode-tab {
-  flex: 1;
-  padding: 0.6rem 0.75rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  color: var(--muted);
-  font-size: 0.85rem;
-  cursor: pointer;
-}
-
-.mode-tab.is-active {
-  color: var(--cyan);
-  border-color: var(--cyan);
-}
-
 .crypto-form {
   display: flex;
   flex-direction: column;
@@ -546,11 +524,6 @@ button {
   font-family: var(--font-mono);
   font-size: 0.9rem;
   padding: 0.6rem 0.7rem;
-}
-
-.crypto-input--area {
-  resize: vertical;
-  word-break: break-all;
 }
 
 .crypto-input:focus {
