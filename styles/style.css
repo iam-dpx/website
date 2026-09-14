@@ -95,11 +95,57 @@ button {
 }
 
 .topbar__brand {
+  position: relative;
+  display: inline-block;
   font-family: var(--font-display);
   font-weight: 700;
   letter-spacing: 0.02em;
   color: var(--text);
   font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.topbar__brand:hover {
+  color: var(--cyan);
+}
+
+/* Periodic glitch flicker — brief, repeating, not constant/distracting */
+.topbar__brand::before,
+.topbar__brand::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.topbar__brand::before {
+  color: var(--cyan);
+  clip-path: inset(0 0 60% 0);
+  animation: brand-glitch-1 6s infinite;
+}
+
+.topbar__brand::after {
+  color: var(--magenta);
+  clip-path: inset(60% 0 0 0);
+  animation: brand-glitch-2 6s infinite;
+}
+
+@keyframes brand-glitch-1 {
+  0%, 92%, 100% { opacity: 0; transform: translate(0, 0); }
+  93% { opacity: 1; transform: translate(-2px, -1px); }
+  95% { opacity: 1; transform: translate(2px, 1px); }
+  97% { opacity: 0; }
+}
+
+@keyframes brand-glitch-2 {
+  0%, 92%, 100% { opacity: 0; transform: translate(0, 0); }
+  93% { opacity: 1; transform: translate(2px, 1px); }
+  95% { opacity: 1; transform: translate(-2px, -1px); }
+  97% { opacity: 0; }
 }
 
 .topbar__nav {
