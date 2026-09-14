@@ -1,4 +1,3 @@
-"use strict";
 /*
   main.ts
   Dead Pixel — personal profile site
@@ -196,3 +195,4 @@ function init() {
     initTerminal();
 }
 document.addEventListener("DOMContentLoaded", init);
+export {};

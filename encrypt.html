@@ -1,0 +1,121 @@
+<!--
+  encrypt.html
+  Dead Pixel — link encryptor
+  Written by Dead Pixel (iamreal.dpx@gmail.com)
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dead Pixel — Link Encryptor</title>
+  <meta name="description" content="Password-protect any link with client-side AES-256-GCM encryption. Nothing is ever sent to a server." />
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+
+  <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <span class="topbar__brand">DEAD_PIXEL</span>
+    <button class="topbar__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="siteNav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="topbar__nav" id="siteNav" aria-label="Section navigation">
+      <a href="index.html#about" data-nav="about">About</a>
+      <a href="index.html#make" data-nav="make">What I Make</a>
+      <a href="index.html#skills" data-nav="skills">Skills</a>
+      <a href="encrypt.html" data-nav="encrypt" class="is-active">Encrypt</a>
+    </nav>
+  </header>
+
+  <header class="hero hero--compact">
+    <p class="hero__eyebrow">// link encryptor</p>
+    <h1 class="hero__title-sm">Password-protect a link</h1>
+    <p class="hero__tagline">
+      AES-256-GCM, entirely in your browser. No server ever sees the link
+      or the password — the encrypted link is the only thing that exists.
+    </p>
+  </header>
+
+  <main>
+    <section class="section reveal" id="tool">
+
+      <div class="mode-tabs" role="tablist">
+        <button class="mode-tab is-active" id="tabEncrypt" data-mode="encrypt" type="button" role="tab" aria-selected="true">
+          Encrypt a link
+        </button>
+        <button class="mode-tab" id="tabDecrypt" data-mode="decrypt" type="button" role="tab" aria-selected="false">
+          Decrypt a link
+        </button>
+      </div>
+
+      <form class="crypto-form" id="encryptForm">
+        <label class="crypto-label" for="encryptUrl">Link to protect</label>
+        <input
+          class="crypto-input"
+          id="encryptUrl"
+          type="url"
+          required
+          placeholder="https://example.com/something-private"
+          autocomplete="off"
+        />
+
+        <label class="crypto-label" for="encryptPassword">Password</label>
+        <input
+          class="crypto-input"
+          id="encryptPassword"
+          type="password"
+          required
+          minlength="4"
+          autocomplete="new-password"
+          placeholder="pick something only the recipient knows"
+        />
+
+        <button class="btn" type="submit">Encrypt</button>
+      </form>
+
+      <form class="crypto-form" id="decryptForm" hidden>
+        <label class="crypto-label" id="decryptPayloadLabel" for="decryptPayload">Encrypted link</label>
+        <textarea
+          class="crypto-input crypto-input--area"
+          id="decryptPayload"
+          rows="3"
+          placeholder="Paste the encrypted link here"
+        ></textarea>
+
+        <p class="crypto-note" id="decryptDetectedNote" hidden>
+          Encrypted link detected in the URL — just enter the password.
+        </p>
+
+        <label class="crypto-label" for="decryptPassword">Password</label>
+        <input
+          class="crypto-input"
+          id="decryptPassword"
+          type="password"
+          required
+          autocomplete="current-password"
+        />
+
+        <button class="btn" type="submit">Decrypt</button>
+      </form>
+
+      <div class="crypto-result" id="cryptoResult" hidden></div>
+
+      <p class="section__note">
+        There's no database and no account — the encrypted text after the
+        <code>#</code> in the link <em>is</em> the whole message. Losing the
+        password means the link can never be recovered by anyone,
+        including me.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="footerYear"></span> Dead Pixel. All rights reserved.</p>
+  </footer>
+
+  <script type="module" src="dist/main.js"></script>
+  <script type="module" src="dist/encrypt.js"></script>
+</body>
+</html>

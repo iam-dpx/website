@@ -396,6 +396,157 @@ button {
   border-color: var(--cyan);
 }
 
+/* ---------- Compact hero (used on secondary pages) ---------- */
+
+.hero--compact {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.hero__title-sm {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 6vw, 2.2rem);
+  font-weight: 700;
+  margin: 0.5rem 0 0.75rem;
+  color: var(--text);
+}
+
+/* ---------- Link utility ---------- */
+
+.link {
+  color: var(--cyan);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  word-break: break-all;
+}
+
+.link:hover {
+  color: var(--magenta);
+}
+
+/* ---------- Link encryptor tool ---------- */
+
+.mode-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.mode-tab {
+  flex: 1;
+  padding: 0.6rem 0.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.mode-tab.is-active {
+  color: var(--cyan);
+  border-color: var(--cyan);
+}
+
+.crypto-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.crypto-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.75rem;
+}
+
+.crypto-input {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  padding: 0.6rem 0.7rem;
+}
+
+.crypto-input--area {
+  resize: vertical;
+  word-break: break-all;
+}
+
+.crypto-input:focus {
+  outline: none;
+  border-color: var(--cyan);
+}
+
+.crypto-note {
+  font-size: 0.8rem;
+  color: var(--cyan);
+  margin: 0.5rem 0 0;
+}
+
+.btn {
+  margin-top: 1.25rem;
+  padding: 0.65rem 1.2rem;
+  background: var(--cyan);
+  color: var(--bg);
+  border: none;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.btn:hover {
+  background: var(--magenta);
+}
+
+.btn--ghost {
+  margin-top: 0.75rem;
+  background: transparent;
+  color: var(--cyan);
+  border: 1px solid var(--border);
+  font-weight: 400;
+}
+
+.btn--ghost:hover {
+  border-color: var(--cyan);
+  background: transparent;
+  color: var(--cyan);
+}
+
+.crypto-result {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.crypto-result--success {
+  border-color: var(--cyan);
+}
+
+.crypto-result--error {
+  border-color: var(--magenta);
+  color: var(--magenta);
+}
+
+.crypto-result__label {
+  margin: 0 0 0.4rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.crypto-result__value {
+  font-size: 0.85rem;
+  word-break: break-all;
+  margin: 0;
+}
+
 /* ---------- Footer ---------- */
 
 .footer {

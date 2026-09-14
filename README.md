@@ -24,6 +24,18 @@ website/
 Future JS, CSS, or other code should go in its own folder the same way
 (`styles/`, `src/`, `assets/`) rather than mixed into `index.html`.
 
+## Pages
+
+- `index.html` — profile/home page
+- `encrypt.html` — link encryptor tool: password-protects any link with
+  client-side AES-256-GCM (via `src/encrypt.ts`). Password is run through
+  PBKDF2 (250,000 iterations) to derive the key; a fresh random salt and
+  IV are generated per encryption. The encrypted payload lives entirely
+  in the URL fragment (`#...`), which browsers never send to a server —
+  so there's nothing to store and nothing a server ever sees. Wrong
+  password or tampered payload fails cleanly via GCM's built-in
+  authentication check.
+
 ## What's interactive
 
 - **Terminal hero** — prints an intro and the command list automatically on
