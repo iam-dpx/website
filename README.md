@@ -61,8 +61,11 @@ Future JS, CSS, or other code should go in its own folder the same way
   <p>© <span id="footerYear"></span> Dead Pixel. All rights reserved.</p>
 </footer>
 ```
-Paired with `initFooterYear()` in `main.ts`, which fills in the current
-year automatically — no email or other contact info in the footer.
+Paired with `initFooterYear()` in `main.ts`, which fills in a copyright
+year range automatically: `2021–<current year>` (or just `2021` if
+somehow run in 2021 itself). Update the hardcoded `startYear` constant
+in that function if a future project should start from a different year.
+No email or other contact info in the footer.
 
 ## How the TypeScript build works
 

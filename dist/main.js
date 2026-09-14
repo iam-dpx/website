@@ -180,7 +180,9 @@ function initFooterYear() {
     const el = document.getElementById("footerYear");
     if (!el)
         return;
-    el.textContent = String(new Date().getFullYear());
+    const startYear = 2021;
+    const currentYear = new Date().getFullYear();
+    el.textContent = currentYear > startYear ? `${startYear}–${currentYear}` : `${currentYear}`;
 }
 /* ---------- Init ---------- */
 function init() {
