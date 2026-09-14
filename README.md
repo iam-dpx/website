@@ -30,6 +30,10 @@ Future JS, CSS, or other code should go in its own folder the same way
 - `404.html` — custom not-found page, matching the site's look. Cloudflare
   Pages automatically serves this for any route that doesn't match a real
   page, since it sits at the project root — no config needed.
+- `discord-bot.html` — project page explaining the Discord customizer
+  bot (linked from the "What I Make" section). The actual bot is a
+  **separate** Cloudflare Worker project, not part of this Pages site —
+  see the `discord-bot` repo for its code and deploy instructions.
 - `encrypt.html` — link encryptor tool: password-protects any link with
   client-side AES-256-GCM (via `src/encrypt.ts`). Password is run through
   PBKDF2 (250,000 iterations) to derive the key; a fresh random salt and

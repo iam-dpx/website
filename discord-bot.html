@@ -1,0 +1,106 @@
+<!--
+  discord-bot.html
+  Dead Pixel — Discord customizer bot project page
+  Written by Dead Pixel (iamreal.dpx@gmail.com)
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dead Pixel — Discord Customizer Bot</title>
+  <meta name="description" content="A Discord bot that lets a server customize its own nickname, and (rate-limited) its global username and avatar, entirely through slash commands." />
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+
+  <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="topbar__brand" href="index.html" data-text="DEAD_PIXEL">DEAD_PIXEL</a>
+    <button class="topbar__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="siteNav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="topbar__nav" id="siteNav" aria-label="Section navigation">
+      <a href="index.html#about" data-nav="about">About</a>
+      <a href="index.html#make" data-nav="make">What I Make</a>
+      <a href="index.html#skills" data-nav="skills">Skills</a>
+      <a href="encrypt.html" data-nav="encrypt">Encrypt</a>
+    </nav>
+  </header>
+
+  <header class="hero hero--compact">
+    <p class="hero__eyebrow">// discord bot</p>
+    <h1 class="hero__title-sm">Customize me, no code required</h1>
+    <p class="hero__tagline">
+      A Discord bot controlled entirely by slash commands — change its
+      nickname per server, or its name/avatar everywhere, without ever
+      touching the bot's code.
+    </p>
+  </header>
+
+  <main>
+    <section class="section reveal">
+      <h2 class="section__label">What it does</h2>
+      <p class="section__lead">
+        Most bots ship with a fixed name and picture the server has no say
+        over. This one hands that control to whoever's running the
+        server, through three commands.
+      </p>
+    </section>
+
+    <section class="section reveal">
+      <h2 class="section__label">Commands</h2>
+
+      <div class="lang-list">
+        <div class="lang-item">
+          <p class="lang-item__name">/setnickname &lt;name&gt;</p>
+          <p class="lang-item__desc">
+            Changes the bot's nickname in that server only. Anyone with
+            "Manage Nicknames" can run it. No rate limit worth mentioning.
+          </p>
+        </div>
+        <div class="lang-item">
+          <p class="lang-item__name">/setname &lt;name&gt;</p>
+          <p class="lang-item__desc">
+            Changes the bot's actual username — but Discord makes this
+            change everywhere the bot is added, not just in the server
+            that ran the command. Admin-only by default. Discord allows
+            roughly 2 of these per hour.
+          </p>
+        </div>
+        <div class="lang-item">
+          <p class="lang-item__name">/setavatar &lt;image url&gt;</p>
+          <p class="lang-item__desc">
+            Changes the bot's profile picture — also global across every
+            server, same as above. Admin-only by default. Discord allows
+            roughly one change every 10 minutes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <h2 class="section__label">How it's built</h2>
+      <p class="section__body">
+        Runs on Cloudflare Workers, not a traditional always-on bot host.
+        Discord sends each slash command as a plain HTTP request straight
+        to the Worker instead of needing a persistent connection — so
+        there's no server running 24/7, just a function that wakes up,
+        responds, and goes back to sleep.
+      </p>
+      <p class="section__note">
+        Trade-off: no live custom status message (like "Playing
+        Minecraft") — that specifically requires the persistent connection
+        this bot intentionally doesn't use.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="footerYear"></span> Dead Pixel. All rights reserved.</p>
+  </footer>
+
+  <script type="module" src="dist/main.js"></script>
+</body>
+</html>
