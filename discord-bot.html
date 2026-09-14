@@ -41,6 +41,19 @@
 
   <main>
     <section class="section reveal">
+      <h2 class="section__label">Live status</h2>
+      <div class="bot-status" id="botStatus">
+        <p class="section__body">Loading live bot info…</p>
+      </div>
+      <p class="section__note">
+        "Operational" here means the bot's command endpoint is up and
+        responding — this bot intentionally skips Discord's persistent
+        connection (see "How it's built" below), so there's no traditional
+        green-dot presence to show, just whether it's actually working.
+      </p>
+    </section>
+
+    <section class="section reveal">
       <h2 class="section__label">What it does</h2>
       <p class="section__lead">
         Most bots ship with a fixed name and picture the server has no say
@@ -102,5 +115,6 @@
   </footer>
 
   <script type="module" src="dist/main.js"></script>
+  <script type="module" src="dist/discord-bot-status.js"></script>
 </body>
 </html>

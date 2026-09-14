@@ -610,6 +610,43 @@ button {
   display: inline-block;
 }
 
+/* ---------- Discord bot live status ---------- */
+
+.bot-status {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.bot-status__avatar {
+  border-radius: 50%;
+  border: 1px solid var(--border);
+}
+
+.bot-status__name {
+  margin: 0 0 0.2rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.bot-status__meta {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.bot-status__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cyan);
+  display: inline-block;
+}
+
 /* ---------- Footer ---------- */
 
 .footer {
