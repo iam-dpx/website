@@ -598,6 +598,18 @@ button {
   margin: 0;
 }
 
+/* ---------- 404 page ---------- */
+
+.not-found {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.not-found .btn {
+  text-decoration: none;
+  display: inline-block;
+}
+
 /* ---------- Footer ---------- */
 
 .footer {

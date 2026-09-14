@@ -151,6 +151,7 @@ function initDecryptForm(payload) {
             return;
         try {
             const original = await decryptLink(payload, password);
+            form.hidden = true;
             startRedirectCountdown(result, original);
         }
         catch {

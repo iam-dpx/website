@@ -1,0 +1,53 @@
+<!--
+  404.html
+  Dead Pixel — not found page
+  Written by Dead Pixel (iamreal.dpx@gmail.com)
+
+  Cloudflare Pages serves this file automatically for any route that
+  doesn't match a real page, as long as it sits at the project root.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Dead Pixel</title>
+  <meta name="description" content="Page not found." />
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+
+  <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="topbar__brand" href="index.html" data-text="DEAD_PIXEL">DEAD_PIXEL</a>
+    <button class="topbar__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="siteNav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="topbar__nav" id="siteNav" aria-label="Section navigation">
+      <a href="index.html#about" data-nav="about">About</a>
+      <a href="index.html#make" data-nav="make">What I Make</a>
+      <a href="index.html#skills" data-nav="skills">Skills</a>
+      <a href="encrypt.html" data-nav="encrypt">Encrypt</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section reveal not-found">
+      <p class="hero__eyebrow">// 404</p>
+      <h1 class="hero__title-sm">This page doesn't exist.</h1>
+      <p class="section__body">
+        Whatever you were looking for isn't here — the link might be old,
+        mistyped, or something that never got built.
+      </p>
+      <a class="btn" href="index.html">Back to home</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="footerYear"></span> Dead Pixel. All rights reserved.</p>
+  </footer>
+
+  <script type="module" src="dist/main.js"></script>
+</body>
+</html>

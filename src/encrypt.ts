@@ -198,6 +198,7 @@ function initDecryptForm(payload: string): void {
 
     try {
       const original = await decryptLink(payload, password);
+      form.hidden = true;
       startRedirectCountdown(result, original);
     } catch {
       showResult(result, "Incorrect password. Try again.", "error");

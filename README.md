@@ -27,6 +27,9 @@ Future JS, CSS, or other code should go in its own folder the same way
 ## Pages
 
 - `index.html` — profile/home page
+- `404.html` — custom not-found page, matching the site's look. Cloudflare
+  Pages automatically serves this for any route that doesn't match a real
+  page, since it sits at the project root — no config needed.
 - `encrypt.html` — link encryptor tool: password-protects any link with
   client-side AES-256-GCM (via `src/encrypt.ts`). Password is run through
   PBKDF2 (250,000 iterations) to derive the key; a fresh random salt and
