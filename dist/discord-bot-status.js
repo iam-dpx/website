@@ -7,10 +7,9 @@
   Worker is the only place the bot's token lives, so this page only ever
   sees the public info the Worker chooses to hand back.
 
-  IMPORTANT: replace this with the bot's real deployed Worker URL once
-  it's live. Until then, this will just show "unavailable".
+  Points at the deployed Worker's /info endpoint.
 */
-const BOT_API_BASE = "https://dead-pixel-discord-bot.YOUR-SUBDOMAIN.workers.dev";
+const BOT_API_BASE = "https://discord-bot.iamreal-dpx.workers.dev";
 function renderStatus(container, info) {
     var _a;
     if (info.status !== "operational" || !info.username) {
